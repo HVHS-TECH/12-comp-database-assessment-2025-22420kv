@@ -1,0 +1,21 @@
+body {
+    background-color: lightblue;
+}
+
+.container {
+    background-color: lightcoral;
+    float: left;
+    width: 500px;
+    height: 895px;
+    border-radius: 30px;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+label {
+    display: flex;
+    padding-left: 2rem;
+}
