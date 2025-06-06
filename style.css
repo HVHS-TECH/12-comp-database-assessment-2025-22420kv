@@ -2,20 +2,37 @@ body {
     background-color: lightblue;
 }
 
-.container {
-    background-color: lightcoral;
-    float: left;
-    width: 500px;
-    height: 895px;
-    border-radius: 30px;
-}
-
 h2 {
     display: flex;
     justify-content: center;
+    color: pink;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    padding-bottom: 30px;
+}
+
+.container {
+    max-width: 600px;
+    float: left;
+    margin: auto;
+    background-color: lightcoral;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding-right: 0;
 }
 
 label {
-    display: flex;
-    padding-left: 2rem;
+  display: block;
+  margin-top: 1rem;
+  color: pink;
 }
