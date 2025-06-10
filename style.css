@@ -4,6 +4,14 @@ body {
     width:100vw;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  color: pink;
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
 h2 {
   color: pink;
   font-size: 3rem;
@@ -14,6 +22,11 @@ h3 {
   color: pink;
   font-size: 2rem;
   margin-top: 0.2rem;
+}
+
+.container2 {
+  position: relative;
+
 }
 
 .container {
