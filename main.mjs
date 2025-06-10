@@ -12,11 +12,14 @@ console.log('%c main.mjs',
 // Import all external constants & functions required
 /**************************************************************/
 // Import all the constants & functions required from fb_io module
-import { fb_authenticate, fb_write}
+import { fb_authenticate, fb_write, fb_readRecord}
  from './script.mjs';
     window.fb_authenticate  = fb_authenticate;
     window.fb_write = fb_write;
+    window.fb_readRecord = fb_readRecord;
 
+
+document.body.style.overflow = 'hidden';
 /**************************************************************/
 //   END OF CODE
 /**************************************************************/

@@ -14,7 +14,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup }
 import { ref, set }
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-export { fb_authenticate, fb_write};
+export { fb_authenticate, fb_write, fb_readRecord};
 
 const FB_GAMECONFIG = {
         apiKey: "AIzaSyCn36qBrPRutqLXCYIyzkyjMQRiYyhRC2Q",
@@ -35,7 +35,6 @@ console.log(FB_GAMEDB);
 
 var currentUser = null;
 var userId = null;
-var emailTemplate = "";
 var statusTemplate = "";
 
 
@@ -67,7 +66,7 @@ function fb_authenticate() {
             </div>`
             document.getElementById("statusMessage").innerHTML = statusTemplate;
         } else {
-            console.log('user not loggen in');
+            console.log('user not logged in');
             return null;
         }
     console.log('logging in...');
@@ -84,14 +83,14 @@ function fb_authenticate() {
         //✅ Code for a successful authentication goes here
 
         if (status, fb_authenticate) {
-            console.log('user loggen in');
+            console.log('user logged in');
             statusTemplate = `
             <div> 
                <p> Thank you for loggin in! You may proceed.</p>
             </div>`
             document.getElementById("statusMessage").innerHTML = statusTemplate;
         } else {
-            console.log('user not loggen in');
+            console.log('user not logged in');
             return null;
         }
     
@@ -125,14 +124,16 @@ function fb_write() {
     } 
 
     var name = document.getElementById("name").value;
-    var fruit = document.getElementById("favoriteFruit").value;
-    var quantity = document.getElementById("fruitQuantity").value;
+    var age = document.getElementById("age").value;
+    var favoriteGame = document.getElementById("favoriteGame").value;
+    var whyAreYouHere = document.getElementById("whyAreYouHere").value;
 
     const dbReference = ref(FB_GAMEDB, 'users/' + userId);
     set(dbReference, {
         Name: name,
-        FavoriteFruit: fruit,
-        FruitQuantity: quantity
+        Age: age,
+        FavoriteGame: favoriteGame,
+        WhyAreYouHere: whyAreYouHere
     }).then(() => {  
         console.log('successfull write');
         //✅ Code for a successful write goes here
@@ -142,3 +143,28 @@ function fb_write() {
     });
  
 }
+
+function fb_readRecord() {
+    console.log('%c fb_readRecord(): ',
+        'color: ' + COL_C + '; background-color: lightPink'
+    );
+
+    const dbReference = ref(FB_GAMEDB, 'users/' + userId);
+    
+    // Return the promise from `get()` so that it can be chained in `view_email()`
+    return get(dbReference).then((snapshot) => {
+        var fb_data = snapshot.val();
+        if (fb_data != null) {
+            console.log(fb_data);
+        } else {
+            console.log('No record found');
+            return null; // Return null if no data is found
+        }
+    }).catch((error) => {
+        console.log('failed read');
+        throw error; // Rethrow the error to propagate it
+    });
+
+}
+
+

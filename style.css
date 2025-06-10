@@ -1,5 +1,7 @@
 body {
     background-color: lightblue;
+    height:100vh;
+    width:100vw;
 }
 
 h2 {
@@ -16,6 +18,8 @@ h3 {
 
 .container {
     max-width: 600px;
+    height:89vh;
+    width:15vw;
     float: left;
     margin: auto;
     background-color: lightcoral;
@@ -50,4 +54,8 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+#statusMessage {
+  color: pink;
 }
