@@ -10,12 +10,14 @@ h1 {
   color: rgb(137, 165, 243);
   font-size: 3rem;
   margin-bottom: 0;
+  font-family: "Poetsen One"
 }
 
 h2 {
   color: pink;
   font-size: 3rem;
   margin-bottom: 0;
+  font-family: "Poetsen One"
 }
 
 h3 {
@@ -40,17 +42,15 @@ h3 {
 }
 
 .container2 {
-    max-width: 600px;
-    height:89vh;
-    width:100vw;
-    float: center;
-    margin: auto;
-    background-color: rgb(163, 211, 243);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-bottom: 50px;
-    padding-right: 50px;
+  max-width: 600px;
+  height:89vh;
+  width:100vw;
+  float: center;
+  margin: auto;
+  background-color: rgb(163, 211, 243);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 input {
@@ -65,6 +65,31 @@ label {
   display: block;
   margin-top: 1rem;
   color: pink;
+}
+
+.buttonP {
+  color: pink;
+  background-color: #21263f;
+  font-size: 40px;
+  border-radius: 10px;
+  border: 10px solid #3d425b;
+  font-family: "Pixelify Sans";
+}
+.buttonN {
+  color: white;
+  background-color: #ec4464;
+  font-size: 33px;
+  border-radius: 10px;
+  border: 10px solid #FBC490;
+  font-family: "Poetsen One"
+}
+.buttonG {
+  color: white;
+  background-color: #ec4464;
+  font-size: 27px;
+  border-radius: 10px;
+  border: 10px solid #FBC490;
+  font-family: "Poetsen One"
 }
 
 button {
