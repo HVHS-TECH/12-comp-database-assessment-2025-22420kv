@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: rgb(183, 231, 247);
     height:100vh;
     width:100vw;
 }
@@ -7,7 +7,7 @@ body {
 h1 {
   display: flex;
   justify-content: center;
-  color: pink;
+  color: rgb(137, 165, 243);
   font-size: 3rem;
   margin-bottom: 0;
 }
@@ -32,6 +32,20 @@ h3 {
     float: left;
     margin: auto;
     background-color: lightcoral;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 50px;
+    padding-right: 50px;
+}
+
+.container2 {
+    max-width: 600px;
+    height:89vh;
+    width:100vw;
+    float: center;
+    margin: auto;
+    background-color: rgb(163, 211, 243);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
