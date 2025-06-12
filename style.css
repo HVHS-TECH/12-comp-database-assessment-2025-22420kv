@@ -7,21 +7,22 @@ body {
 h1 {
   display: flex;
   justify-content: center;
-  color: rgb(137, 165, 243);
-  font-size: 3rem;
-  margin-bottom: 0;
+  color: rgb(142, 172, 253);
+  font-size: 100px;
+  padding-top: 50px;
+  margin-top: 0;
   font-family: "Poetsen One"
 }
 
 h2 {
-  color: pink;
+  color: rgb(192, 64, 113);
   font-size: 3rem;
   margin-bottom: 0;
   font-family: "Poetsen One"
 }
 
 h3 {
-  color: pink;
+  color: rgb(192, 64, 113);
   font-size: 2rem;
   margin-top: 0.2rem;
 }
@@ -33,7 +34,7 @@ h3 {
     width:15vw;
     float: left;
     margin: auto;
-    background-color: lightcoral;
+    background-color: rgb(243, 169, 197);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,16 +42,9 @@ h3 {
     padding-right: 50px;
 }
 
-.container2 {
-  max-width: 600px;
-  height:89vh;
-  width:100vw;
-  float: center;
-  margin: auto;
-  background-color: rgb(163, 211, 243);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.containerG {
+  display: flex;
+  justify-content: center;
 }
 
 input {
@@ -64,46 +58,46 @@ input {
 label {
   display: block;
   margin-top: 1rem;
-  color: pink;
-}
-
-.buttonP {
-  color: pink;
-  background-color: #21263f;
-  font-size: 40px;
-  border-radius: 10px;
-  border: 10px solid #3d425b;
-  font-family: "Pixelify Sans";
-}
-.buttonN {
-  color: white;
-  background-color: #ec4464;
-  font-size: 33px;
-  border-radius: 10px;
-  border: 10px solid #FBC490;
+  color: rgb(192, 64, 113);
   font-family: "Poetsen One"
 }
+
+.gameB {
+  margin-left: 20px;
+}
+
 .buttonG {
-  color: white;
-  background-color: #ec4464;
-  font-size: 27px;
-  border-radius: 10px;
-  border: 10px solid #FBC490;
+  width: 300px;
+  height: 150px;
+  color: rgb(192, 64, 113);
+  background-color: rgb(243, 169, 197);
+  font-size: 40px;
+  border-radius: 30px;
+  border: 10px solid rgb(228, 127, 165);
   font-family: "Poetsen One"
 }
 
-button {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-  padding: 0.7rem 1.2rem;
-  background-color: pink;
-  color: white;
+.smallB {
+  width: 90px;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: "Poetsen One";
+  background-color: rgb(183, 231, 247);
+  color: rgb(128, 161, 252);
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  border: 5px solid rgb(160, 184, 248);
   cursor: pointer;
+}
+.smallB:hover {
+  background-color: rgb(159, 212, 255);
+}
+
+.buttonG:hover {
+  background-color: rgb(248, 145, 184);
 }
 
 #statusMessage {
-  color: pink;
+  color: rgb(192, 64, 113);
 }

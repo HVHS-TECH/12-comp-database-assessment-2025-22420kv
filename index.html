@@ -20,7 +20,7 @@
     <h2> Welcome!</h2>
     <h3> Sigh in:</h3>
 
-   <button onclick="fb_authenticate()">Email</button>
+   <button class="smallB" onclick="fb_authenticate()">Email</button>
 
     <form id="form">
       <label for="name">Your Name:</label>
@@ -35,29 +35,26 @@
       <label for="whyAreYouHere">Why are you here?</label>
       <input type="text" id="whyAreYouHere" name="whyAreYouHere" required />
 
-      <button onclick="fb_write()">Submit</button>
+      <button class="smallB" onclick="fb_write()">Submit</button>
     </form>
 
     <p id="statusMessage">You must be logged in to proceed!</p>
 
   </div>
 
-  <div class="container2">
-    <h1> Database Project!</h1>
+  <h1> Database Project!</h1>
 
-    <form action="https://hvhs-tech.github.io/12comp-javascript-project-2025-22420kv/">
-      <button class="buttonP">Platformer</button>
-    </form>
-    <form action="https://cgeirxkqwx-2443516819-a.codehs.me/index.html">
-      <button class="buttonN">Number Guess</button>
-    </form>
-    <form action="https://redesigned-space-cod-4jv94r7pwxg7cgpp-5502.app.github.dev/">
+  <div class="containerG">
+    <div class="gameB" id="platformerG">
+      <button class="buttonG">Platformer</button>
+    </div>
+    <div class="gameB" id="numberGuessG">
+      <button class="buttonG">Number Guess</button>
+    </div>
+    <div class="gameB" id="gameThatWorksG">
       <button class="buttonG">Game That Works</button>
-    </form>
-
+    </div>
   </div>
-
-
 
 </body>
 
