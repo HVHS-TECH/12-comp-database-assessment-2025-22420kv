@@ -34,7 +34,7 @@ h3 {
     width:15vw;
     float: left;
     margin: auto;
-    background-color: rgb(243, 169, 197);
+    background-color: rgb(248, 192, 214);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@ label {
   width: 300px;
   height: 150px;
   color: rgb(192, 64, 113);
-  background-color: rgb(243, 169, 197);
+  background-color: rgb(248, 192, 214);
   font-size: 40px;
   border-radius: 30px;
   border: 10px solid rgb(228, 127, 165);

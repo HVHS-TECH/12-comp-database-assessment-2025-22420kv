@@ -81,12 +81,11 @@ function fb_authenticate() {
         userId = currentUser.uid;
         console.log('successful login');
         //✅ Code for a successful authentication goes here
-
         if (status, fb_authenticate) {
             console.log('user logged in');
             statusTemplate = `
             <div> 
-               <p> Thank you for loggin in! You may proceed.</p>
+               <p> Thank you for logging in! You may proceed.</p>
             </div>`
             document.getElementById("statusMessage").innerHTML = statusTemplate;
         } else {
@@ -108,6 +107,7 @@ function fb_authenticate() {
 // Return: n/a
 /***********************************/
 function fb_write() {
+    console.log("made it to write");
     console.log('%c fb_write(): ',
         'color: ' + COL_C + '; background-color: hotPink'
     );
@@ -116,18 +116,20 @@ function fb_write() {
         alert("You must be logged in to proceed!");
         return;
     } else {
+        console.log("in the right place")
         statusTemplate = `
-            <div> 
-               <p> Submitted! </p>
-            </div>`
-            document.getElementById("statusMessage").innerHTML = statusTemplate;
+        <div> 
+            <p> Submitted! </p>
+        </div>`
+        document.getElementById("statusMessage").innerHTML = statusTemplate;
     } 
 
+    
     var name = document.getElementById("name").value;
     var age = document.getElementById("age").value;
     var favoriteGame = document.getElementById("favoriteGame").value;
     var whyAreYouHere = document.getElementById("whyAreYouHere").value;
-
+    
     const dbReference = ref(FB_GAMEDB, 'users/' + userId);
     set(dbReference, {
         Name: name,
@@ -141,17 +143,16 @@ function fb_write() {
         console.log(error);
         //❌ Code for a write error goes here
     });
- 
 }
 
 function fb_readRecord() {
+    console.log("Didnt make it");
     console.log('%c fb_readRecord(): ',
         'color: ' + COL_C + '; background-color: lightPink'
     );
-
+    
     const dbReference = ref(FB_GAMEDB, 'users/' + userId);
     
-    // Return the promise from `get()` so that it can be chained in `view_email()`
     return get(dbReference).then((snapshot) => {
         var fb_data = snapshot.val();
         if (fb_data != null) {
@@ -164,7 +165,5 @@ function fb_readRecord() {
         console.log('failed read');
         throw error; // Rethrow the error to propagate it
     });
-
+    
 }
-
-
