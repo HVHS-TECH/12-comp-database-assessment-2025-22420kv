@@ -114,6 +114,7 @@ function fb_write() {
 
     if (!currentUser) {
         alert("You must be logged in to proceed!");
+        event.preventDefault()
         return;
     } else {
         console.log("in the right place")
@@ -143,7 +144,9 @@ function fb_write() {
         console.log(error);
         //❌ Code for a write error goes here
     });
+
 }
+
 
 function fb_readRecord() {
     console.log("Didnt make it");
