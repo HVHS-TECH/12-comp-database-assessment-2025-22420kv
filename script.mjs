@@ -42,6 +42,7 @@ function status () {
     console.log('status working..');
 }
 
+
 /***********************************/
 // fb_authenticate()
 // Called by authenticate Button
