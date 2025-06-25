@@ -132,7 +132,7 @@ function fb_write() {
     var favoriteGame = document.getElementById("favoriteGame").value;
     var whyAreYouHere = document.getElementById("whyAreYouHere").value;
     
-    const dbReference = ref(FB_GAMEDB, 'users/' + userId);
+    const dbReference = ref(FB_GAMEDB, 'website/users/' + userId);
     set(dbReference, {
         Name: name,
         Age: age,
