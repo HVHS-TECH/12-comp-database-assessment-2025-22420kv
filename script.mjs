@@ -14,7 +14,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup }
 import { ref, set }
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-export { fb_authenticate, fb_write, fb_readRecord};
+export { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard};
 
 const FB_GAMECONFIG = {
         apiKey: "AIzaSyCn36qBrPRutqLXCYIyzkyjMQRiYyhRC2Q",
@@ -36,6 +36,7 @@ console.log(FB_GAMEDB);
 var currentUser = null;
 var userId = null;
 var statusTemplate = "";
+var leaderBoard = "";
 
 
 function status () {
@@ -76,6 +77,7 @@ function fb_authenticate() {
         prompt: 'select_account'
     });
     
+    
 
     signInWithPopup(AUTH, PROVIDER).then((result) => {
         currentUser = result.user;
@@ -99,6 +101,24 @@ function fb_authenticate() {
     
 }
 
+
+function fb_leaderBoard() {
+    const dbReference = ref(FB_GAMEDB, 'website/gameThatWorksScore/');
+    
+    return get(dbReference).then((snapshot) => {
+        var fb_data = snapshot.val();
+        if (fb_data != null) {
+            console.log(fb_data);
+        } else {
+            console.log('No record found');
+            return null; // Return null if no data is found
+        }
+    }).catch((error) => {
+        console.log('failed read');
+        throw error; // Rethrow the error to propagate it
+    });
+    
+}
 
 /***********************************/
 // fb_writeRecord()
