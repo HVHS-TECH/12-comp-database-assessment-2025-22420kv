@@ -12,13 +12,14 @@ console.log('%c main.mjs',
 // Import all external constants & functions required
 /**************************************************************/
 // Import all the constants & functions required from fb_io module
-import { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard, fb_submitScore}
+import { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard, fb_submitScore, fb_logout}
  from './script.mjs';
     window.fb_authenticate  = fb_authenticate;
     window.fb_write = fb_write;
     window.fb_readRecord = fb_readRecord;
     window.fb_leaderBoard = fb_leaderBoard;
     window.fb_submitScore = fb_submitScore;
+    window.fb_logout = fb_logout;
 
 window.addEventListener('load', () => {
     fb_leaderBoard();

@@ -8,7 +8,7 @@ import { initializeApp }
 import { getDatabase }
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged}
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut}
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
  
 
@@ -18,7 +18,7 @@ import { ref, set }
 import { get, child, onValue} 
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-export { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard, fb_submitScore};
+export { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard, fb_submitScore, fb_logout};
 
 const FB_GAMECONFIG = {
         apiKey: "AIzaSyCn36qBrPRutqLXCYIyzkyjMQRiYyhRC2Q",
@@ -161,6 +161,23 @@ if (auth.currentUser) {
 }
 
 
+function fb_logout() {
+    console.log ('%c fb_logout(): ',
+        'color: ' + COL_C + '; background-color: pink'
+    );
+
+    const AUTH = getAuth();
+    signOut(AUTH).then(() => {
+        console.log('Successful logout');
+        //✅ Code for a successful logout goes here
+    })
+
+    .catch((error) => {
+        console.log('Failed logout');
+        //❌ Code for a logout error goes here
+    });
+}
+
 /***********************************/
 // fb_writeRecord()
 // Called by write record Button
@@ -249,8 +266,11 @@ function fb_leaderBoard() {
                 Object.entries(scores)
                     .sort((a, b) => b[1].score - a[1].score)
                     .forEach(([userId, userData]) => {
-                        const item = document.createElement("li");
-                        item.textContent = `${userData.name || 'Anonymous'}: ${userData.score}`;
+                        const item = document.createElement("li"); 
+                        item.innerHTML = `
+                            <div class="name">${userData.name || 'Anonymous'}</div>
+                            <div class="score">${userData.score}</div>
+                        `;
                         list.appendChild(item);
                     });
             } else {
