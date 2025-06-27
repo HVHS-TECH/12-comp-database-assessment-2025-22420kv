@@ -151,6 +151,14 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
+firebase.auth().currentUser.getIdToken(true)
+    .then((idToken) => {
+        window.location.href = `https://hvhs-tech.github.io/demo-game-game-that-works-22420kv/token=${idToken}`;
+    })
+    .catch((error) => {
+        console.log("Fialed to get token", error);
+    })
+
 /***********************************/
 // fb_writeRecord()
 // Called by write record Button
