@@ -235,10 +235,36 @@ function fb_readRecord() {
 }
 
 
+function fb_leaderBoard() {
+    const dbRef = ref(FB_GAMEDB);
+    get(child(dbRef, 'website/scores/gameThatWorks'))
+        .then((snapshot) => {
+            console.log('snapshot exists?', snapshot.exists());
+            console.log('snapshot.val() =', snapshot.val());
+            if (snapshot.exists()) {
+                const scores = snapshot.val();
+                const list = document.getElementById("leaderboardGameThatWorks");
+                list.innerHTML = '';
+
+                Object.entries(scores)
+                    .sort((a, b) => b[1].score - a[1].score)
+                    .forEach(([userId, userData]) => {
+                        const item = document.createElement("li");
+                        item.textContent = `${userData.name || 'Anonymous'}: ${userData.score}`;
+                        list.appendChild(item);
+                    });
+            } else {
+                console.log("No scores found for gameThatWorks :C");
+            }
+        })
+        .catch((error) => {
+            console.error("Read error:", error);
+        });
+}
 
    //function to fill in leaderboard 
 
-function fb_leaderBoard() {
+/*function fb_leaderBoard() {
     const dbRef =ref(FB_GAMEDB);
 
     // Game that works leaderboard
@@ -260,4 +286,4 @@ function fb_leaderBoard() {
         }
     })
 }
-
+*/
