@@ -242,17 +242,17 @@ function fb_leaderBoard() {
     const dbRef =ref(FB_GAMEDB);
 
     // Game that works leaderboard
-    get(child(dbRef, 'website/gameThatWorks')).then ((snapshot) => {
+    get(child(dbRef, 'website/score/gameThatWorks')).then ((snapshot) => {
         if (snapshot.exists()) {
             const scores = snapshot.val();
             const list = document.getElementById("leaderboardGameThatWorks");
             list.innerHTML = ''; 
 
             Object.entries(scores)
-                .sort((a, b) => b[1].Score - a[1].Score) //Sorts score
+                .sort((a, b) => b[1].score - a[1].score) //Sorts score
                 .forEach(([userId, userData]) => {
                     const item = document.createElement("li");
-                    item.textContent = `${userData.Name || 'Anonymous'}: ${userData.Score}`;
+                    item.textContent = `${userData.name || 'Anonymous'}: ${userData.score}`;
                     list.appendChild(item);
                 });
         } else {
