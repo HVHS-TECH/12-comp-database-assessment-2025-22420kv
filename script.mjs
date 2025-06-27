@@ -117,7 +117,7 @@ function fb_submitScore(score, gameName) {
     if (user) {
         const userId = user.uid;
         const name = user.displayName || "Anonymous";
-        const scoreRef = ref(FB_GAMEDB, `website/scores/${gameName}/${userId}`);
+        const scoreRef = ref(FB_GAMEDB, `website/scores/gameThatWorks/${userId}`);
         set(scoreRef, {
             name: name,
             score, score
