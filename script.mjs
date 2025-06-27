@@ -37,7 +37,6 @@ var FB_GAMEDB  = getDatabase(FB_GAMEAPP);
 console.log(FB_GAMEDB);
 
 
-
 //Webpage variables
 var currentUser = null;
 var userId = null;
@@ -154,11 +153,13 @@ if (auth.currentUser) {
     auth.currentUser.getIdToken(true)
         .then((idToken) => {
             window.location.href = `https://hvhs-tech.github.io/demo-game-game-that-works-22420kv/?token=${idToken}`;
+            console.log("Token found:", idToken);
         })
         .catch((error) => {
           console.log("Fialed to get token", error);
         })
 }
+
 
 /***********************************/
 // fb_writeRecord()
