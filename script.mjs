@@ -1,3 +1,9 @@
+//NOTICE:
+// Did use chatGPT when i got really stuck
+// Mostly researched and watched vidoes to help complete 
+
+
+
 const COL_C = 'white';	    // These two const are part of the coloured 	
 const COL_B = '#CD7F32';	//  console.log for functions scheme
 console.log('%c fb_io.mjs',
