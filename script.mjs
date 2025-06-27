@@ -8,13 +8,17 @@ import { initializeApp }
 import { getDatabase }
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-import { getAuth, GoogleAuthProvider, signInWithPopup }
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged}
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+ 
 
 import { ref, set }
  from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-export { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard};
+import { get, child, onValue} 
+ from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+export { fb_authenticate, fb_write, fb_readRecord, fb_leaderBoard, fb_submitScore};
 
 const FB_GAMECONFIG = {
         apiKey: "AIzaSyCn36qBrPRutqLXCYIyzkyjMQRiYyhRC2Q",
@@ -27,18 +31,19 @@ const FB_GAMECONFIG = {
         measurementId: "G-RXDD9GFN2H"
       };
 
-    
+    //Database variables
 var FB_GAMEAPP = initializeApp(FB_GAMECONFIG);
 var FB_GAMEDB  = getDatabase(FB_GAMEAPP);
 console.log(FB_GAMEDB);
 
 
+
+//Webpage variables
 var currentUser = null;
 var userId = null;
 var statusTemplate = "";
-var leaderBoard = "";
 
-
+    //Status message to show user their login status
 function status () {
     console.log('status working..');
 }
@@ -102,23 +107,49 @@ function fb_authenticate() {
 }
 
 
-function fb_leaderBoard() {
-    const dbReference = ref(FB_GAMEDB, 'website/gameThatWorksScore/');
-    
-    return get(dbReference).then((snapshot) => {
-        var fb_data = snapshot.val();
-        if (fb_data != null) {
-            console.log(fb_data);
-        } else {
-            console.log('No record found');
-            return null; // Return null if no data is found
-        }
-    }).catch((error) => {
-        console.log('failed read');
-        throw error; // Rethrow the error to propagate it
-    });
-    
+function fb_submitScore(score, gameName) {
+    console.log('%c fb_submitScore(): ',
+        'color: ' + COL_C + '; background-color: lightGreen'
+    );
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+        const userId = user.uid;
+        const name = user.displayName || "Anonymous";
+        const scoreRef = ref(FB_GAMEDB, `website/scores/${gameName}/${userId}`);
+        set(scoreRef, {
+            name: name,
+            score, score
+        }).then(() => {
+            console.log(`Correct Score ${score} submitted for ${name} in ${gameName}`);
+        }).catch((error) => {
+            console.error("Failed to write score:", error);
+        });
+    } else {
+        console.log("Cannot submit score: user not signed in");
+    }
+
 }
+
+const auth = getAuth();
+const user = auth.currentUser;
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        currentUser = user;
+        userId = user.uid;
+        console.log("User is still signed in: ", user.email);
+        document.getElementById("statusMessage").innerText = "Welcome back, " + (user.displayName || user.email);
+    } else {
+        currentUser = null;
+        userId = null;
+        console.log("User is signed out");
+        document.getElementById("statusMessage").innerText = "Please sign in to proceed!";
+    }
+});
+
 
 /***********************************/
 // fb_writeRecord()
@@ -169,6 +200,7 @@ function fb_write() {
 }
 
 
+
 function fb_readRecord() {
     console.log("Didnt make it");
     console.log('%c fb_readRecord(): ',
@@ -191,3 +223,31 @@ function fb_readRecord() {
     });
     
 }
+
+
+
+   //function to fill in leaderboard 
+
+function fb_leaderBoard() {
+    const dbRef =ref(FB_GAMEDB);
+
+    // Game that works leaderboard
+    get(child(dbRef, 'website/gameThatWorks')).then ((snapshot) => {
+        if (snapshot.exists()) {
+            const scores = snapshot.val();
+            const list = document.getElementById("leaderboardGameThatWorks");
+            list.innerHTML = ''; 
+
+            Object.entries(scores)
+                .sort((a, b) => b[1].Score - a[1].Score) //Sorts score
+                .forEach(([userId, userData]) => {
+                    const item = document.createElement("li");
+                    item.textContent = `${userData.Name || 'Anonymous'}: ${userData.Score}`;
+                    list.appendChild(item);
+                });
+        } else {
+            console.log("No score found for gameThatWorks :C ");
+        }
+    })
+}
+
