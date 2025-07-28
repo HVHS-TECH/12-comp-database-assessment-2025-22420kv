@@ -197,6 +197,10 @@ function fb_write() {
         'color: ' + COL_C + '; background-color: hotPink'
     );
 
+    if (currentUser == null || !isNaN(currentUser)) {
+        alert("Invalid input")
+    } 
+
     if (!currentUser) {
         alert("You must be logged in to proceed!");
         event.preventDefault()
