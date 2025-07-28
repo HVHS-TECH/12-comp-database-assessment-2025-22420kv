@@ -191,16 +191,24 @@ function fb_logout() {
 // Input: n/a
 // Return: n/a
 /***********************************/
+//let validName = true;
+
+
+
 function fb_write() {
     console.log("made it to write");
     console.log('%c fb_write(): ',
         'color: ' + COL_C + '; background-color: hotPink'
     );
-
-    if (currentUser == null || !isNaN(currentUser)) {
-        alert("Invalid input")
-    } 
-
+    
+//while (validName) {
+//    if (name == null || !isNaN(name)) {
+//        alert("Invalid input: Please enter your input again.")
+ //   } else {
+ //       validName = false;
+ //   }
+//}
+    
     if (!currentUser) {
         alert("You must be logged in to proceed!");
         event.preventDefault()
