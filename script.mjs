@@ -191,8 +191,8 @@ function fb_logout() {
 // Input: n/a
 // Return: n/a
 /***********************************/
-//let validName = true;
 
+let invalidName = true;
 
 
 function fb_write() {
@@ -200,14 +200,6 @@ function fb_write() {
     console.log('%c fb_write(): ',
         'color: ' + COL_C + '; background-color: hotPink'
     );
-    
-//while (validName) {
-//    if (name == null || !isNaN(name)) {
-//        alert("Invalid input: Please enter your input again.")
- //   } else {
- //       validName = false;
- //   }
-//}
     
     if (!currentUser) {
         alert("You must be logged in to proceed!");
@@ -227,6 +219,22 @@ function fb_write() {
     var age = document.getElementById("age").value;
     var favoriteGame = document.getElementById("favoriteGame").value;
     var whyAreYouHere = document.getElementById("whyAreYouHere").value;
+
+    if(name == null) {
+            return;
+        }
+        if(name == null || !isNaN(name) || name == "") {
+            console.log("Invalid name input");
+            alert("Invalid input: Name must not have any numbers!!");
+            statusTemplate = `
+        <div> 
+            <p> Resubmit! </p>
+        </div>`
+        document.getElementById("statusMessage").innerHTML = statusTemplate;
+        } else {
+            console.log("Correct name input");
+            invalidName = false;
+        }
     
     const dbReference = ref(FB_GAMEDB, 'website/users/' + userId);
     set(dbReference, {
@@ -243,6 +251,7 @@ function fb_write() {
     });
 
 }
+
 
 
 
